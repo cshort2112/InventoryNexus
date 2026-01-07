@@ -2,49 +2,60 @@ package com.phoenixware.shopify_integration.shopify_integration_backend.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "order_item")
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "itemid")
-    private Long id;
+    private int id;
+
     @Column(name = "orderid")
-    private Long order_id;
+    private int orderId;
+
     @Column(name = "sku")
     private String sku;
+
     @Column(name = "item_name")
     private String title;
+
     @Column(name = "base_price")
-    private double price;
+    private BigDecimal price;
+
     @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "creation_timestamp", nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP = DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime creationTimestamp;
 
     public OrderItem() {
     }
 
-    public OrderItem(Long order_id, String sku, String title, double price, int quantity) {
-        this.order_id = order_id;
+    public OrderItem(int orderId, String sku, String title, BigDecimal price, int quantity) {
+        this.orderId = orderId;
         this.sku = sku;
         this.title = title;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getOrder_id() {
-        return order_id;
+    public int getOrder_id() {
+        return orderId;
     }
 
-    public void setOrder_id(Long order_id) {
-        this.order_id = order_id;
+    public void setOrder_id(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getSku() {
@@ -63,11 +74,11 @@ public class OrderItem {
         this.title = title;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -81,6 +92,6 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "OrderItem [id=" + id + ", order_id=" + order_id + ", sku=" + sku + ", title=" + title + ", price=" + price + ", quantity=" + quantity + "]";
+        return "OrderItem [id=" + id + ", orderId=" + orderId + ", sku=" + sku + ", title=" + title + ", price=" + price + ", quantity=" + quantity + ", creation_timestamp=" + creationTimestamp + "]";
     }
 }
