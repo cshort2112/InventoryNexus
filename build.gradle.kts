@@ -4,9 +4,9 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
 }
 
-group = "com.phoenixware.Shopify_Integration"
-version = "0.0.1-SNAPSHOT"
-description = "Shopify_Integration_Backend"
+group = "com.phoenixware.InventoryNexus"
+version = "0.1.1"
+description = "InventoryNexus"
 
 java {
     toolchain {
@@ -25,8 +25,8 @@ dependencies {
     //for application health and metrics
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     //adding security... this way we can lock down endpoints.
-//    implementation("org.springframework.boot:spring-boot-starter-security")
-//    adding spring data jpa
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    //adding spring data jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     //adding rest
     implementation("org.springframework.boot:spring-boot-starter-data-rest")

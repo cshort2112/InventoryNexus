@@ -1,4 +1,4 @@
-package com.phoenixware.shopify_integration.shopify_integration_backend.exception;
+package com.phoenixware.inventorynexus.exception;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.phoenixware.shopify_integration.shopify_integration_backend.entity;
+package com.phoenixware.inventorynexus.entity;
 
 import jakarta.persistence.*;
 

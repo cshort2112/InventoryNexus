@@ -1,1 +1,1 @@
-rootProject.name = "Shopify_Integration_Backend"
+rootProject.name = "inventorynexus"

@@ -1,4 +1,4 @@
-package com.phoenixware.shopify_integration.shopify_integration_backend.exception;
+package com.phoenixware.inventorynexus.exception;
 
 public class OrderNotFoundException extends RuntimeException{
 
