@@ -8,38 +8,26 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class InventoryNexusSecurityConfig {
 
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-        UserDetails collin = User.builder()
-                .username("cshort2112")
-                .password("{noop}myAwesomePass1984")
-                .roles("ADMIN", "MANAGER", "USER")
-                .build();
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
 
-        UserDetails sofiya = User.builder()
-                .username("skarpi2")
-                .password("{noop}someCoolVersion8080")
-                .roles("MANAGER", "USER")
-                .build();
+        jdbcUserDetailsManager.setUsersByUsernameQuery("SELECT user_id, pw, active FROM employees WHERE user_id = ?");
 
-        UserDetails employee1 = User.builder()
-                .username("employee1")
-                .password("{noop}someBasicPassword")
-                .roles("EMPLOYEE", "USER")
-                .build();
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery("SELECT user_id, role FROM roles WHERE user_id = ?");
 
-        UserDetails someOtherUser = User.builder()
-                .username("someOtherUser")
-                .password("{noop}password")
-                .roles("USER")
-                .build();
+        return jdbcUserDetailsManager;
 
-        return new InMemoryUserDetailsManager(collin, sofiya, someOtherUser, employee1);
+//        return new JdbcUserDetailsManager(dataSource);
     }
 
     @Bean
