@@ -30,6 +30,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     //adding rest
     implementation("org.springframework.boot:spring-boot-starter-data-rest")
+    implementation("org.projectlombok:lombok")
 
     // PostgresSQL driver
     runtimeOnly("org.postgresql:postgresql")
