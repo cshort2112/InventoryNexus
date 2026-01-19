@@ -37,6 +37,8 @@ dependencies {
 
     // Flyway for DB migrations...
     implementation("org.flywaydb:flyway-core")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
