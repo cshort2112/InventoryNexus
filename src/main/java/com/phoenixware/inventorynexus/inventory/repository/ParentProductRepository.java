@@ -1,0 +1,11 @@
+package com.phoenixware.inventorynexus.repository;
+
+import lombok.Data;
+
+/**
+ * Author:      Collin Short
+ * Copyright:   Phoenixware LLC 2026
+ * Created:     1/19/2026
+ */
+public interface ParentProductRepository {
+}
